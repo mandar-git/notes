@@ -62,7 +62,9 @@ Data sources for Kinesis Data Firehose delivery stream
     - AWS IoT            (same region as kinesis data firehose delivery stream)  
     
     
- Firehose + Kinesis Streams
+ 
+ 
+ `Firehose + Kinesis Streams
     
 - When you configure a Kinesis stream as the source of a Kinesis Data Firehose delivery stream, the Kinesis Data Firehose PutRecord and PutRecordBatch operations are disabled. 
 
