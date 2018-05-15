@@ -7,36 +7,33 @@ Amazon Kinesis Data Firehose is a fully managed service for delivering real-time
   - Amazon Elasticsearch Service (Amazon ES)
   - Splunk. 
 
-With Kinesis Data Firehose, you don't need to write applications or manage resources. You configure your data producers to send data to Kinesis Data Firehose, and it automatically delivers the data to the destination that you specified.
+  With Kinesis Data Firehose, you don't need to write applications or manage resources. You configure your data producers to send data to Kinesis Data Firehose, and it automatically delivers the data to the destination that you specified.
 
-You can also configure Kinesis Data Firehose to transform your data before delivering it.
+  You can also configure Kinesis Data Firehose to transform your data before delivering it.
 
-For Amazon Redshift destinations, streaming data is delivered to your S3 bucket first. Kinesis Data Firehose then issues an Amazon Redshift COPY command to load data from your S3 bucket to your Amazon Redshift cluster. If data transformation is enabled, you can optionally back up source data to another Amazon S3 bucket.
+  For Amazon Redshift destinations, streaming data is delivered to your S3 bucket first. Kinesis Data Firehose then issues an Amazon Redshift COPY command to load data from your S3 bucket to your Amazon Redshift cluster. If data transformation is enabled, you can optionally back up source data to another Amazon S3 bucket.
 
+  You can use the AWS Management Console or an AWS SDK to create a Kinesis data delivery stream to your chosen destination
 
-You can use the AWS Management Console or an AWS SDK to create a Kinesis data delivery stream to your chosen destination
-
-
-You can update the configuration of your Kinesis data delivery stream at any time after it’s created, using the Kinesis Data Firehose console or UpdateDestination
-
-Your Kinesis data delivery stream remains in the ACTIVE state while your configuration is updated, and you can continue to send data. The updated configuration normally takes effect within a few minutes. The version number of a Kinesis data delivery stream is increased by a value of 1 after you update the configuration, and it is reflected in the delivered Amazon S3 object name.
+  You can update the configuration of your Kinesis data delivery stream at any time after it’s created, using the Kinesis Data Firehose    console or UpdateDestination
+  
+  Your Kinesis data delivery stream remains in the ACTIVE state while your configuration is updated, and you can continue to send data.   The updated configuration normally takes effect within a few minutes. The version number of a Kinesis data delivery stream is          increased by a value of 1 after you update the configuration, and it is reflected in the delivered Amazon S3 object name.
  
+  Kinesis Data Firehose buffers incoming data before delivering it to Amazon S3. You can choose a buffer size (1–128  MBs) or buffer interval (60–900 seconds); whichever condition is satisfied first triggers data delivery to Amazon S3. 
 
-Kinesis Data Firehose buffers incoming data before delivering it to Amazon S3. You can choose a buffer size (1–128 MBs) or buffer interval (60–900 seconds); whichever condition is satisfied first triggers data delivery to Amazon S3. 
+  In circumstances where data delivery to the destination falls behind data writing to the delivery stream, Kinesis Data Firehose raises the buffer size dynamically to catch up and ensure that all data is delivered to the destination
 
-In circumstances where data delivery to the destination falls behind data writing to the delivery stream, Kinesis Data Firehose raises the buffer size dynamically to catch up and ensure that all data is delivered to the destination
+  Choose GZIP, Snappy, or Zip data compression, or no data compression. Snappy or Zip compression are not available for delivery streams   with Amazon Redshift as the destination
 
-Choose GZIP, Snappy, or Zip data compression, or no data compression. Snappy or Zip compression are not available for delivery streams with Amazon Redshift as the destination
+  Kinesis Data Firehose supports Amazon S3 server-side encryption with AWS Key Management Service (AWS KMS) for encrypting delivered       data in Amazon S3.
 
-Kinesis Data Firehose supports Amazon S3 server-side encryption with AWS Key Management Service (AWS KMS) for encrypting delivered data in Amazon S3.
+  You can choose to not encrypt the data or to encrypt with a key from the list of AWS KMS keys that you own
 
- You can choose to not encrypt the data or to encrypt with a key from the list of AWS KMS keys that you own
-
-When copying data from S3 to Redshift cluster using Redshift COPY command, 
+  When copying data from S3 to Redshift cluster using Redshift COPY command, 
          -  "GZIP" is required if S3 data compression is enabled
          -   "REGION" is required if your S3 bucket isn't in the same AWS Region as your Amazon Redshift cluster
          
-Kinesis Data Firehouse retries for (0-7200) seconds, i.e. max 2 hours if data COPY to Redshift cluster fails
+  Kinesis Data Firehouse retries for (0-7200) seconds, i.e. max 2 hours if data COPY to Redshift cluster fails
 
 If you enable data transformation with Lambda, you can enable source record backup to deliver untransformed incoming data to a separate S3 bucket. You cannot disable source record backup after you enable it
 
