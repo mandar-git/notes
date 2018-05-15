@@ -13,7 +13,7 @@ Amazon Kinesis Data Firehose is a fully managed service for delivering real-time
 
  - You can also configure Kinesis Data Firehose to transform your data before delivering it.
 
-  For Amazon Redshift destinations, streaming data is delivered to your S3 bucket first. Kinesis Data Firehose then issues an Amazon Redshift COPY command to load data from your S3 bucket to your Amazon Redshift cluster. If data transformation is enabled, you can optionally back up source data to another Amazon S3 bucket.
+ - For Amazon Redshift destinations, streaming data is delivered to your S3 bucket first. Kinesis Data Firehose then issues an Amazon Redshift COPY command to load data from your S3 bucket to your Amazon Redshift cluster. If data transformation is enabled, you can optionally back up source data to another Amazon S3 bucket.
 
   You can use the AWS Management Console or an AWS SDK to create a Kinesis data delivery stream to your chosen destination
 
@@ -64,33 +64,33 @@ Data sources for Kinesis Data Firehose delivery stream
     
  Firehose + Kinesis Streams
     
-When you configure a Kinesis stream as the source of a Kinesis Data Firehose delivery stream, the Kinesis Data Firehose PutRecord and PutRecordBatch operations are disabled. 
+- When you configure a Kinesis stream as the source of a Kinesis Data Firehose delivery stream, the Kinesis Data Firehose PutRecord and PutRecordBatch operations are disabled. 
 
-To add data to your Kinesis Data Firehose delivery stream in this case, use the Kinesis Data Streams PutRecord and PutRecords operations
+- To add data to your Kinesis Data Firehose delivery stream in this case, use the Kinesis Data Streams PutRecord and PutRecords operations
 
-Kinesis Data Firehose starts reading data from the LATEST position of your Kinesis stream
+- Kinesis Data Firehose starts reading data from the LATEST position of your Kinesis stream
 
-Kinesis Data Firehose calls the Kinesis Data Streams GetRecords operation once per second for each shard
+- Kinesis Data Firehose calls the Kinesis Data Streams GetRecords operation once per second for each shard
 
-More than one Kinesis Data Firehose delivery stream can read from the same Kinesis stream. Other Kinesis applications (consumers) can also read from the same stream. Each call from any Kinesis Data Firehose delivery stream or other consumer application counts against the overall throttling limit for the shard. 
+- More than one Kinesis Data Firehose delivery stream can read from the same Kinesis stream. Other Kinesis applications (consumers) can also read from the same stream. Each call from any Kinesis Data Firehose delivery stream or other consumer application counts against the overall throttling limit for the shard. 
 
 
 
   Firehose + Kinesis Agent
 
-Kinesis Agent is a stand-alone Java software application that offers an easy way to collect and send data to Kinesis Data Firehose
+ - Kinesis Agent is a stand-alone Java software application that offers an easy way to collect and send data to Kinesis Data Firehose
 
-The agent continuously monitors a set of files and sends new data to your Kinesis data delivery stream
+ - The agent continuously monitors a set of files and sends new data to your Kinesis data delivery stream
 
-The agent handles file rotation, checkpointing, and retry upon failures
+ - The agent handles file rotation, checkpointing, and retry upon failures
 
-It also emits Amazon CloudWatch metrics to help you better monitor and troubleshoot the streaming process
+ - It also emits Amazon CloudWatch metrics to help you better monitor and troubleshoot the streaming process
 
-By default, records are parsed from each file based on the newline ('\n') character. However, the agent can also be configured to parse multi-line records 
+ - By default, records are parsed from each file based on the newline ('\n') character. However, the agent can also be configured to parse multi-line records 
 
-You can install the agent on Linux-based server environments such as web servers, log servers, and database servers
+ - You can install the agent on Linux-based server environments such as web servers, log servers, and database servers
 
-To use Kinesis Agent, your OS must be either Amazon Linux AMI with version 2015.09 or later, or Red Hat Enterprise Linux  (RHEL 7) version 7 or later
+ - To use Kinesis Agent, your OS must be either Amazon Linux AMI with version 2015.09 or later, or Red Hat Enterprise Linux  (RHEL 7) version 7 or later
 
 Manage your AWS credentials using one of the following methods:
 
