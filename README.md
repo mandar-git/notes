@@ -61,8 +61,6 @@ Data sources for Kinesis Data Firehose delivery stream
     - CloudWatch Events  (same region as kinesis data firehose delivery stream)
     - AWS IoT            (same region as kinesis data firehose delivery stream)  
     
-    
- 
  
  # Firehose + Kinesis Streams
     
