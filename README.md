@@ -94,13 +94,13 @@ Data sources for Kinesis Data Firehose delivery stream
 
 Manage your AWS credentials using one of the following methods:
 
-Specify an IAM role when you launch your EC2 instance.
+     Specify an IAM role when you launch your EC2 instance.
 
-Specify AWS credentials when you configure the agent (see awsAccessKeyId and awsSecretAccessKey).
+     Specify AWS credentials when you configure the agent (see awsAccessKeyId and awsSecretAccessKey).
 
-Edit /etc/sysconfig/aws-kinesis-agent to specify your region and AWS access keys.
+     Edit /etc/sysconfig/aws-kinesis-agent to specify your region and AWS access keys.
 
-If your EC2 instance is in a different AWS account, create an IAM role to provide access to the Kinesis Data Firehose service, and specify that role when you configure the agent (see assumeRoleARN and assumeRoleExternalId). Use one of the previous methods to specify the AWS credentials of a user in the other account who has permission to assume this role.
+     If your EC2 instance is in a different AWS account, create an IAM role to provide access to the Kinesis Data Firehose service, and      specify that role when you configure the agent (see assumeRoleARN and assumeRoleExternalId). Use one of the previous methods to           specify the AWS credentials of a user in the other account who has permission to assume this role.
 
 
 The IAM role or AWS credentials that you specify must have permission to perform the Kinesis Data Firehose PutRecordBatch operation for the agent to send data to your delivery stream
