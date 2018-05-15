@@ -9,7 +9,7 @@ Amazon Kinesis Data Firehose is a fully managed service for delivering real-time
     - Splunk
   
 
-  - With Kinesis Data Firehose, you don't need to write applications or manage resources. You configure your data producers to send data to Kinesis Data Firehose, and it automatically delivers the data to the destination that you specified.
+  `With Kinesis Data Firehose, you don't need to write applications or manage resources. You configure your data producers to send data to Kinesis Data Firehose, and it automatically delivers the data to the destination that you specified.
 
  - You can also configure Kinesis Data Firehose to transform your data before delivering it.
 
