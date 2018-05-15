@@ -7,9 +7,9 @@ Amazon Kinesis Data Firehose is a fully managed service for delivering real-time
   - Amazon Elasticsearch Service (Amazon ES)
   - Splunk. 
 
-  With Kinesis Data Firehose, you don't need to write applications or manage resources. You configure your data producers to send data to Kinesis Data Firehose, and it automatically delivers the data to the destination that you specified.
+  - With Kinesis Data Firehose, you don't need to write applications or manage resources. You configure your data producers to send data to Kinesis Data Firehose, and it automatically delivers the data to the destination that you specified.
 
-  You can also configure Kinesis Data Firehose to transform your data before delivering it.
+ - You can also configure Kinesis Data Firehose to transform your data before delivering it.
 
   For Amazon Redshift destinations, streaming data is delivered to your S3 bucket first. Kinesis Data Firehose then issues an Amazon Redshift COPY command to load data from your S3 bucket to your Amazon Redshift cluster. If data transformation is enabled, you can optionally back up source data to another Amazon S3 bucket.
 
